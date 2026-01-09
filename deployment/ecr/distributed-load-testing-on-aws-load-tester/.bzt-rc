@@ -6,22 +6,25 @@ modules:
     path: ~/.bzt/jmeter-taurus/{version}/bin/jmeter
     download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     version: 5.6.3
+    memory-xmx: 2G # allow 2G of the 4G Fargate Container memory
     force-ctg: true
     detect-plugins: true
     fix-jars: true
     plugins:
-    - jpgc-json
-    - jmeter-ftp
+    - jpgc-autostop
     - jpgc-casutg
     - jpgc-dummy
     - jpgc-ffw
     - jpgc-fifo
     - jpgc-functions
-    - jpgc-perfmon
     - jpgc-prmctl
     - jpgc-tst
-    - jpgc-udp
-    - bzm-random-csv
+    - jpgc-redis
+    - jpgc-jmxmon
+    - bzm-http2
+    - websocket-samplers
+    # Suppress warnings "Existing CookieManager ... superseded by ..." due to https://github.com/apache/jmeter/issues/6457
+    cmdline: --loglevel org.apache.jmeter.protocol.http.sampler.HTTPSamplerBase=ERROR
     plugins-manager:
       download-link: https://search.maven.org/remotecontent?filepath=kg/apc/jmeter-plugins-manager/{version}/jmeter-plugins-manager-{version}.jar
       version: '1.11'

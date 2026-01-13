@@ -6,7 +6,9 @@ modules:
     path: ~/.bzt/jmeter-taurus/{version}/bin/jmeter
     download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     version: 5.6.3
-    memory-xmx: 2G # allow 2G of the 4G Fargate Container memory
+    # allow 2G of the 4G Fargate Container memory
+    memory-xms: 2G
+    memory-xmx: 2G
     force-ctg: true
     detect-plugins: true
     fix-jars: true

@@ -1,14 +1,16 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+settings:
+  env:
+    # Allow 50% of Fargate Container memory as heap for JMeter
+    HEAP: -XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=50
+
 modules:
   jmeter:
     path: ~/.bzt/jmeter-taurus/{version}/bin/jmeter
     download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     version: 5.6.3
-    # allow 2G of the 4G Fargate Container memory
-    memory-xms: 2G
-    memory-xmx: 2G
     force-ctg: true
     detect-plugins: true
     fix-jars: true

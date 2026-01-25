@@ -3,8 +3,9 @@
 
 settings:
   env:
-    # Allow 50% of Fargate Container memory as heap for JMeter
-    HEAP: -XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=50
+    # Allow percentage of Fargate Container memory as heap for JMeter.
+    # The same amount will be used for -XX:MaxDirectMemorySize (leaving at least 20%).
+    HEAP: -XX:MaxRAMPercentage=40 -XX:InitialRAMPercentage=40
 
 modules:
   jmeter:
